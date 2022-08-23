@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+	legend pos= north west,
+	xlabel=$\varepsilon$,
+	ylabel=$\Delta (V-V) (\AA)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=blue, solid]{
+		plot "disViso.dat" u 1:3 w linespoints;
+	};\addlegendentry{$V_{iso}$}
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=red, solid]{
+		plot "disV" u 1:4 w linespoints;
+	};\addlegendentry{$V_{anis}$}
+
+	\end{axis}
+
+	
+	\end{tikzpicture}
+\end{document}

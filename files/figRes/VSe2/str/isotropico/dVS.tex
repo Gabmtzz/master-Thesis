@@ -1,0 +1,29 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={nodes={scale=0.7, transform shape},font=\large, draw=none},
+	legend pos= north west,
+	xlabel=$\varepsilon$,
+	ylabel=$\Delta (V-Se) (\AA)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=blue, solid]{
+		plot "Dvs" u 1:3 w linespoints;
+	};\addlegendentry{$V_{iso}$}
+	%\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=red, solid]{
+	%	plot "disV" u 1:4 w linespoints;
+	%};\addlegendentry{$V_{anis}$}
+	\addplot table [x=e, y={create col/linear regression={y=dvs}}]{Dvs.dat};
+	\addlegendentry{%
+		$\pgfmathprintnumber{\pgfplotstableregressiona} \cdot x
+		\pgfmathprintnumber[print sign]{\pgfplotstableregressionb}$ ajuste} %
+
+	\end{axis}
+
+	
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.16}
+\pgfplotsset{
+	/pgfplots/colormap={winter}{rgb255=(255,0,0), rgb255=(0,255,0), rgb255=(0,0,150)}
+}
+\pgfplotsset{
+	compat=newest,
+	colormap={colorbarAsLegend}{
+		of colormap={
+			winter,
+			target pos={0,0.0020,0.0040,0.006,0.008,0.010,0.070,0.1,1},
+			sample for=const,
+		}
+	},
+}
+\pgfplotsset{compat=newest}
+\begin{document}
+	\pgfplotsset{scaled ticks = false}
+	\begin{tikzpicture}
+		\begin{axis}[
+			enlargelimits=false,
+		    ytick={},yticklabels={},
+		    ylabel={$(\times 10^{-2})\Delta n (r)$},
+		    y label style={at={(1.1,0.5)}},
+			xtick={},xticklabels={} ,
+			colorbar as legend,
+			colormap name=colorbarAsLegend,
+			colormap access=const
+			]
+			
+			\addplot graphics[xmin=0, xmax=4, ymin=0, ymax=4] {pts2_carga.eps};
+			
+			
+			
+		    
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

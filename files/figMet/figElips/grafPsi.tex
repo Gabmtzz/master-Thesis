@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+	legend pos= north west,
+	xlabel=Energ\'ia $(eV)$,
+	xmax=1.7,
+	ylabel=$\Psi (grado)$]
+	
+	\addplot [only marks, color=blue] table [ x expr=1239.4/\thisrow{Wavelength}, y=Psi] {03052021.BSRBN.12h 26mn 13s.txt};
+	\addlegendentry{datos exp.};
+	\addplot [mark=none, color=red]table [ x=eV, y=psi] {fit70.dat};
+	\addlegendentry{ajuste};
+	\end{axis}
+	
+	\end{tikzpicture}
+\end{document}

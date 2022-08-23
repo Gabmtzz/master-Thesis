@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=12cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	%legend style={nodes={scale=0.5, transform shape}},
+	%legend pos= north west,
+	xlabel=$H (Oe)$,
+	ylabel=$\eta_k (rad)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=blue, solid]{
+		plot "datHist.txt" u (10*$1):3 w linespoints;
+	};%\addlegendentry{$\Delta SeSe_{1}$}
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=red, solid]{
+		plot "datHist.txt" u (10*$1):5 w linespoints;
+	};%\addlegendentry{$\Delta SeSe_{2}$}
+    %\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=brown, solid]{
+    %	plot "promdS" u 1:5 w linespoints;
+    %};\addlegendentry{$prom. ~ \Delta SeSe$}
+    \draw[->,blue, rounded corners,thick] (500,3)--(640,6)--(660,14);
+    \draw[<-,red, rounded corners,thick] (420,25)--(460,37)--(650,37);
+	\end{axis}
+     \coordinate (otheraxis) at (rel axis cs:0.2,0.7);
+    \begin{axis}[at={(otheraxis)},width=4.5cm, 
+    	xlabel=$H (Oe)$,
+    	ylabel=$\Delta \eta_k (rad)$]
+    	
+    	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=blue, solid]{
+    		plot "datHist.txt" u (10*$1):($5-$3) w linespoints;
+    	};
+    \end{axis}
+	
+	\end{tikzpicture}
+\end{document}

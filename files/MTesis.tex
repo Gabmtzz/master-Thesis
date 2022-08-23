@@ -1,0 +1,93 @@
+\documentclass[12pt,Letterpaper, oneside]{book}
+
+\usepackage[
+top=2.5cm,
+bottom=2.5cm,
+left=3.5cm,
+right=2.5cm,
+headheight=17pt, 
+includehead,includefoot,
+heightrounded, 
+]{geometry} 
+\renewcommand{\baselinestretch}{1.25}
+\usepackage{fancyhdr, amsmath}
+\usepackage{epsfig, graphics, graphicx,subfigure, tabularx}
+\usepackage{gensymb}
+\usepackage{listings}%\addcontentsline{toc}{chapter}{\'Indice de tablas}
+\usepackage{multirow}% http://ctan.org/pkg/multirow
+\graphicspath{/figuras}
+%\psdraft
+\pagestyle{fancy}
+\usepackage[utf8]{inputenc}
+\fancyhf{} % clear all fields
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\space#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\space#1}}
+%\fancyhead[re]{\slshape\leftmark}
+%\fancyhead[lo]{\slshape\rightmark}
+\fancyhead[re,lo]{\slshape\leftmark}
+\fancyhead[le,ro]{\textbf{\thepage}}
+
+\fancyfoot[le,ro]{\textbf{Estudio te\'orico de propiedades magn\'eticas en [Pt,V] (Se,S)\textsubscript{2} y experimentación de efecto Kerr en CoFeB}}
+
+
+\renewcommand{\headrulewidth}{0.15mm}
+\renewcommand{\footrulewidth}{0.15mm}
+\addtolength{\headwidth}{\marginparsep}
+
+
+ \usepackage[spanish,es-tabla]{babel}
+ \decimalpoint
+
+
+\includeonly{
+	portada,
+	hoja,
+	declaracion,
+	agradecimiento,
+	resumen,
+	abstract,
+	figuras,
+	tablas,
+	chapInt,
+	capDFT,
+	capKerr,
+	capMetodos,
+	capREsSim,
+	capResExp,
+	capConcl,
+	AppCorrRel,
+	AppJones,
+	AppKerr,
+	AppProgPy,
+	referencias
+}
+
+\begin{document}
+	\frontmatter
+	    \include{portada}
+	    \include{hoja}
+	    \include{declaracion}
+		\include{resumen}
+		\include{abstract}
+		\include{agradecimiento}
+		\tableofcontents 
+		\include{figuras} 
+		\include{tablas}  
+	\mainmatter
+		\include{chapInt}
+		\include{capDFT}
+		\include{capKerr}
+		\include{capMetodos}
+		\include{capREsSim}
+		\include{capResExp}
+		\include{capConcl}
+		\appendix
+		\include{AppCorrRel}
+		\include{AppJones}
+		\include{AppKerr}
+		\include{AppProgPy}
+	\backmatter
+		
+	    \include{referencias}
+	 
+\end{document}

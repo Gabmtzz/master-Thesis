@@ -1,0 +1,75 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.#1}}
+\fancyhead[le,ro]{\textbf{\thepage}}
+\fancyhead[re]{\textbf{\leftmark}}
+\fancyhead[lo]{\textbf{\rightmark}}
+%\fancyfoot[le]{\textbf{materiales bidimensionales}
+%\fancyfoot[ro]{\textbf{}}
+\fancyfoot[ro]{}
+\renewcommand{\headrulewidth}{0.15mm}
+\renewcommand{\footrulewidth}{0.15mm}
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\usepackage[spanish]{babel}
+\begin{document}
+	\chapter*{Declaraci\'on de autor\'ia}
+	\pagestyle{empty}
+	yo declaro que hice este trabajo con ar
+	\chapter*{Resumen}
+	\pagestyle{empty}
+	yo declaro que hice este trabajo con ar
+	\chapter*{Abstract}
+	\pagestyle{empty}
+	yo declaro que hice este trabajo con ar
+	\chapter*{Agradecimientos}
+	\pagestyle{empty}
+	
+	\tableofcontents
+	
+	\chapter{Introducci\'on}
+	en el presente trabajo se muestra un estudio  te\'orico de materiales bidimensionales para poder encontrar su respuesta 
+	
+	\chapter{Teor\'ia funcional de la densidad}
+	
+	\section{teoremas de Hohenberg-Kohn}
+	
+	\section{ecuaciones de Kohn-Sham}
+	\section{Funcional de intercambio y correlaci\'on (XC)}
+	\subsection{propiedades del funcional XC}
+	\subsection{correcci\'on de gradientes generalizados}
+	\subsubsection{aproximaci\'on PBE}
+	\section{pseudopotenciales}
+	\section{correcciones relativista escalar y completamente relativista}
+	\section{formalismo espacio-k y soluci\'on del sistema de ecuaciones de Kohn-Sham}
+	\section{cálculo de fuerza por medio del teorema de Hellman-Feyman}
+	\subsection{algoritmo de Broyden-Fletcher-Goldfarb-Shanno (BFGS)}
+	
+	\chapter{Materiales bidimensionales formados por dicalcogenuros de metales de trancisi\'on}
+	\section{propiedades geom\'etricas}
+	\section{propiedades electr\'onicas}
+	\section{propiedades magn\'eticas}
+	
+	\chapter{M\'etodos}
+	\section{m\'etodos para simulaciones }
+	\subsection{elaboraci\'on de superceldas}
+	\subsection{descripción del software Quantum Espresso}
+	\subsubsection{detalles computacionales}
+	\section{Sistema de espectroscop\'ia por efecto Kerr magneto-\'optico}
+	
+	\chapter{Resultados  y an\'alisis de simulaciones }
+	\section{estudio de propiedades magn\'eticas en mono-capas sin defectos }
+	\subsection{estrutura electr\'onica}
+	\subsection{propiedades magn\'eticas}
+	\section{estudio de vacancia de metal de transici\'on en material bidimensional}
+	\subsection{estructura electrónica y propiedades magn\'eticas}
+	\subsection{efecto del strain en las propiedades magn\'eticas}
+	
+	\chapter{resultados mediciones de efecto Kerr}
+	
+	\chapter{conclusiones}
+	
+\end{document}

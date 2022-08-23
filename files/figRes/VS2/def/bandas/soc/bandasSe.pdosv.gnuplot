@@ -1,0 +1,2 @@
+set table "bandasSe.pdosv.table"; set format "%.5f"
+set format "%.7e";; splot "k_V_dos_d_j15.dat" u 1:($2+0.81):3 w points; 

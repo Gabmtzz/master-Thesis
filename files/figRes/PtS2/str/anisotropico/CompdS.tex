@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+    axis y line*=left,
+	xlabel=$\varepsilon_x$,
+	ylabel=$\Delta (S-S)_{1,2} (\AA)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=blue, solid]{
+		plot "dS1_1" w linespoints;
+	};\label{dS1}
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=red, solid]{
+		plot "dS1_2" w linespoints;
+	};\label{dS2}
+	\draw[->, color=blue, very thick](100,35)--(10,35);
+	\draw[->, color=red, very thick](100,46)--(10,46);
+
+	\end{axis}
+    \begin{axis}[
+    	legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+    	legend pos= north west,
+    	axis y line*=right,
+    	axis x line=none,
+    	ylabel=$\Delta (S-S)_3 (\AA)$
+    	]
+    	\addlegendimage{/pgfplots/refstyle=dS1}\addlegendentry{$\Delta S_1$}
+    	\addlegendimage{/pgfplots/refstyle=dS2}\addlegendentry{$\Delta S_2$}
+    	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=brown, solid]{
+    		plot "dS2" w linespoints;
+    	}; \addlegendentry{$\Delta Se_3$}
+    	\draw[->, color=brown, very thick](650,150)--(750,150);
+    \end{axis}
+	
+	\end{tikzpicture}
+\end{document}

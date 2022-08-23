@@ -1,0 +1,56 @@
+\documentclass[margin=5pt, pstricks]{standalone}
+\usepackage{pst-optexp}
+\begin{document}
+	\begin{pspicture}(0.3,-1)(18,10)
+	\pnodes(2,8){Det}(2,6.8){An}(2,4){BS}([Xnodesep=-1.1]BS){Blk}([Xnodesep=3]BS){PEM}([Xnodesep=6]BS){OutF}(2,1){Mu}(16,9){Sup}(14,7.7){FSup}(9,6.5){MC}(9.5,7.7){M1c}(9.5,5.7){M2c}(12.8,5.7){M3c}(12.8,4.8){InF}
+	\begin{optexp}
+		\psset{labelalign=r, mirrortype=extended}
+		\fibercollimator[position=end](PEM)(OutF)
+		\glanthompson[label=-0.6 0, abspos=2.3, glanthompsonsize= 0.1 0.5](PEM)(OutF){Pol}
+		\polarization[poltype=perp, abspos=1.8] (PEM)(OutF)
+		\optretplate [variable, label=0.7 35, abspos=1.3, plateheight=0.5] (PEM)(OutF) {$\lambda/2$}
+		\polarization[poltype=misc, abspos=0.9] (PEM)(OutF)
+		\crystal[crystalsize=0.5 0.5, caxislength=-0.25, position=end, voltage, extnode=t](BS)(PEM) {PEM}
+		\polarization[ abspos=0.4] (PEM)(BS)
+		\polarization[poltype=lcirc, abspos=1.0] (PEM)(BS)
+		\polarization[poltype=perp, abspos=1.5] (PEM)(BS)
+		\polarization[poltype=rcirc, abspos=2.0] (PEM)(BS)
+		\beamsplitter[bsstyle=plate, label= 1 40](An)(BS)(Blk){BS}
+		\newpsstyle{ExtendedMirror}{fillstyle=solid, fillcolor=black}
+		\mirror[labeloffset=0.4](BS)(Blk)(BS)
+		\lens[abspos=2](BS)(Mu){Obj}
+		\opttripole[label= -0.5 90](BS)(Mu)(BS){%
+			\psframe[fillstyle=solid, fillcolor=gray!50](-0.3,0)(0.3,0.2)
+		    \pscircle(0.1,0.4){0.1}
+	        \psline(0.17,0.33)(0.029,0.471)
+            \psline(0.17,0.471)(0.029,0.33)
+            \pscircle(-0.15,0.4){0.1}
+            \pscircle[fillstyle=solid, fillcolor=black](-0.15,0.4){0.04}
+            \rput[b](0,0.6){B}}{Muestra}
+        \glanthompson[position=end, glanthompsonsize= 0.1 0.7](Det)(An){An}
+        \polarization[poltype=perp, abspos=0.9] (Det)(An)
+        \lens[abspos=0.5](Det)(An){$L_2$}
+		\optdetector[dettype=diode, labeloffset=-0.7, position=end, extnode=t](An)(Det){Det}
+		\optbox[position=end, label=-1, optboxsize=1 1.7](16,6)(Sup){Fuente Supercontinua}
+		\fibercollimator[position=end](10,7.7)(FSup)
+		\optbox[innerlabel, position=end, optboxsize= 4.5 3, compshift=0.3](8,6.5)(MC){Monocromador}
+		\pinhole[abspos=4, phwidth=0.1](M1c)(FSup)
+		\pinhole[abspos=0.4, phwidth=0.1](M3c)(InF)
+	    \fibercollimator[position=end](M3c)(InF)
+%=================================================================				
+		\addtopsstyle{Beam}{fillstyle=solid,fillcolor=green!40!white}
+		\drawwidebeam[beamwidth=0.1]{1}{12}
+		\drawwidebeam[beamwidth=0.1, beaminsidefirst]{11}{16-18}
+		\psset{savebeampoints=false}
+		\drawwidebeam[beamwidth=0.1]{11}{13-14}
+		\drawwidebeam[beamwidth=0.1]{23-24}
+		%=========================================================
+		\drawfiber[linecolor=blue]{24}{1}
+		\drawfiber[linecolor=gray]{19}{20}
+	    \addtopsstyle{Beam}{fillstyle=solid,fillcolor=yellow!40!white, linecolor=yellow}
+	    \drawwidebeam[beamwidth=0.1]{20}{22}
+		
+	\end{optexp}
+	\end{pspicture}
+
+\end{document} 

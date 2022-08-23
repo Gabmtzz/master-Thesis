@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	enlargelimits=false,
+	axis on top,
+	xtick={0, 0.6667, 1.2440, 1.5774},
+	xticklabels={$K$,$\Gamma$,$M$,$K$},
+	ylabel=$(E-E_F) ~(eV)$,
+	ymin=-3, ymax=2]
+	
+	\addplot [color=black, dotted]coordinates{(0,0) (1.5774,0)};
+	\addplot[color=black] coordinates {(0,2) (0,-3)};
+    \addplot[color=black] coordinates {(0.6667,2) (0.6667,-3)};
+    \addplot[color=black] coordinates {(1.2440,2) (1.2440,-3)};
+    \addplot[color=black] coordinates {(1.5774,2) (1.5774,-3)};
+	\addplot gnuplot [raw gnuplot, id=test, mark=none,color=blue, solid]{
+		plot"ptse2band.txt" using 1:($2-0.13) w l;
+	};
+    
+
+	\end{axis}
+	\begin{axis}[legend style={nodes={scale=0.5, transform shape},  font=\large, draw=none}, xshift=7.6cm,	enlargelimits=false, xmin=0,xtick={},xticklabels={}, xlabel=DOS (est./eV),x=0.4cm,ymin=-3, ymax=2, yticklabels={}]% table
+	
+	\addplot gnuplot[raw gnuplot, id=test, mark=none, color=blue,solid]{
+		plot "ptse2.dos" u 2:($1-0.13) w l;
+	};
+	\addlegendentry{total}
+	\addplot gnuplot[raw gnuplot, id=test, mark=none, color=red,solid]{
+		plot "Pt_d_tot.dat" u 2:($1-0.13) w l
+	};
+	\addlegendentry{$Pt_d $}
+	\addplot gnuplot[raw gnuplot, id=test, mark=none, color=green,solid]{
+		plot "Se_p_tot.dat" u 2:($1-0.13) w l
+	};
+	\addlegendentry{$Se_p $}
+	\addplot [color=black, dotted]coordinates{(0,0) (7,0)};
+	\end{axis}
+	\end{tikzpicture}
+	
+\end{document}

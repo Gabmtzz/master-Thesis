@@ -1,0 +1,40 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.16}
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+			%legend pos= north west,
+			enlargelimits=false,
+			ytick={},yticklabels={},
+			ylabel=DOS (est./eV),
+			xmin=-2, xmax=2.5, xlabel=$(E-E_F) ~(eV)$]
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+				plot "Se_p_vac.dat" u ($1+0.96):4 w l;
+			};
+			\addlegendentry{$p_{x}$}
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+				plot "Se_p_vac.dat" u ($1+0.96):($6) w l;
+			};
+			\addlegendentry{$p_{y}$}
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=blue,solid]{
+				plot "Se_p_vac.dat" u ($1+0.9):8 w l;
+			};
+			\addlegendentry{$p_{z} $}
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+				plot "Se_p_vac.dat" u ($1+0.96):(-1*$5) w l;
+			};
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+				plot "Se_p_vac.dat" u ($1+0.96):(-1*$7) w l;
+			};
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=blue,solid]{
+				plot "Se_p_vac.dat" u ($1+0.96):(-1*$9) w l;
+			};
+			\addplot [color=black]coordinates {(-3,0) (2.5,0)};
+			\addplot [color=black, dotted]coordinates{(0,-2.5) (0,2.5)};
+			\draw[->, color=red, very thick](-1.5,-1.4)--(-1.5,-2);
+			\draw[->, color=blue, very thick](-1.5,1.4)--(-1.5,2);
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,64 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.16}
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			view={0}{90},
+			enlargelimits=false,
+			axis on top,
+			xtick={1, 31, 60,90},
+			xticklabels={$\Gamma$,$M$,$K$,$\Gamma$},
+			xmin=1, xmax=90,
+			ymin=-3, ymax=1.6,
+			zmin=8, zmax=30,
+			ylabel=$(E-E_F) ~(eV)$,
+			legend style={nodes={scale=0.5, transform shape}, font=\large, draw=none}
+			]
+			
+			\addplot3 [only marks, mark size=0.7, blue, raw gnuplot, id=pdos] gnuplot { splot "k_VS2_dos.dat" u 1:($2-0.2016):3 w l;
+			};
+			\addlegendentry{$\uparrow$}
+			\addplot3 [only marks, mark size=0.7, red, raw gnuplot, id=pdosd] gnuplot { splot "k_VS2_dos.dat" u 1:($2-0.2016):4 w points;
+			};
+			\addlegendentry{$\downarrow$}
+			
+			
+			\addplot[color=black] coordinates {(1,3.3) (1,-3)};
+			\addplot[color=black] coordinates {(31,3.3) (31,-3)};
+			\addplot[color=black] coordinates {(60,3.3) (60,-3)};
+			\addplot[color=black] coordinates {(90,3.3) (90,-3)};
+			\addplot [color=black, dotted]coordinates{(0,0) (90,0)};
+			
+		\end{axis}
+	    \begin{axis}[legend style={nodes={scale=0.6, transform shape}, font=\large, draw=none}, xshift=7.6cm,	enlargelimits=false,xtick={},xticklabels={}, xlabel=DOS (est./eV),x=0.4cm,ymin=-3, ymax=1.6, yticklabels={}]
+	    	
+	    	\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=blue,solid]{
+	    		plot "VS2.dos" u 2:($1-0.201) w l;
+	    	}; \addlegendentry{$total$}
+    	    \addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+    	    	plot "V_d.dat" u 2:($1-0.201) w l;
+    	    };
+            \addlegendentry{$V_d$}
+            \addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+            	plot "S_p.dat" u 2:($1-0.201) w l;
+            };
+            \addlegendentry{$S_p$}
+	    	\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=blue,solid]{
+	    		plot "VS2.dos" u (-1*$3):($1-0.201) w l;
+	    	};
+	    	\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+	    		plot "V_d.dat" u (-1*$3):($1-0.201) w l;
+	    	};
+	    	\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+	    		plot "S_p.dat" u (-1*$3):($1-0.201) w l;
+	    	};
+    	\addplot [color=black]coordinates {(0,-3) (0,1.7)};
+    	    \draw[<-, color=red, very thick](-4,-1.5)--(-4,-1);
+    	    \draw[->, color=blue, very thick](4,-1.5)--(4,-1);
+    	  \addplot [color=black, dotted]coordinates{(-10,0) (10,0)};
+	    \end{axis}
+	\end{tikzpicture}
+    
+\end{document}

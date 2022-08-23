@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+	legend pos= north west,
+	xlabel=$\varepsilon_x$,
+	ylabel=$\Delta (S-V) (\AA)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=blue, solid]{
+		plot "disSV1" u 1:4 w linespoints;
+	};\addlegendentry{$\Delta VS_{1}$}
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=red, solid]{
+		plot "disSV2" u 1:4 w linespoints;
+	};\addlegendentry{$\Delta VS_{2}$}
+    \addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=brown, solid]{
+    	plot "promdSV" u 1:5 w linespoints;
+    };\addlegendentry{$prom. ~ \Delta VS$}
+
+	\end{axis}
+
+	
+	\end{tikzpicture}
+\end{document}

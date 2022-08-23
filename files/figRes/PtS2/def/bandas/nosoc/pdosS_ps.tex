@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.16}
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+			enlargelimits=false,
+			ytick={},yticklabels={},
+			ylabel=DOS (est./eV),
+			xmin=-2, xmax=2, xlabel=$(E-E_F) ~(eV)$]
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+				plot "S_p_novac.dat" u ($1+2.219):4 w l;
+			};
+			\addlegendentry{$p_{x}$}
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+				plot "S_p_novac.dat" u ($1+2.219):($6+$8) w l;
+			};
+			\addlegendentry{$p_{y}+p_{z}$}
+			%\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=brown,solid]{
+			%	plot "S_p_novac.dat" u ($1+2.219):8 w l;
+			%};
+			%\addlegendentry{$p_{z}$}
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+				plot "S_p_novac.dat" u ($1+2.219):(-1*$5) w l;
+			};
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+				plot "S_p_novac.dat" u ($1+2.219):(-1*$7-$9) w l;
+			};
+			%\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=brown,solid]{
+			%	plot "S_p_novac.dat" u ($1+2.219):(-1*$9) w l;
+			%};
+			\addplot [color=black]coordinates {(-3,0) (2,0)};
+			\addplot [color=black, dotted]coordinates{(0,-1) (0,1)};
+			\draw[->, color=red, very thick](1,-0.2)--(1,-0.5);
+			\draw[->, color=blue, very thick](1,0.2)--(1,0.5);
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

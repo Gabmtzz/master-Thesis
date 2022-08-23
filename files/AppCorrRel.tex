@@ -1,0 +1,209 @@
+  \chapter{Correcciones relativistas} \label{corrRelApend}.
+Debido a que la velocidad del electr\'on es mayor que la del  de n\'ucleo y  a la diferencia entre sus masas, es necesario incluir los efectos relativistas en el movimiento de los electrones utilizando la ecuaci\'on de Dirac \cite{doi:10.1098/rspa.1928.0023, doi:10.1098/rspa.1928.0056}:
+\begin{equation}
+	i \hbar \frac{\partial \psi}{\partial t} = (c \pmb{\gamma}\cdot \pmb{p} ~+ \gamma_0 m  c^2  ) \psi, \label{ec:Dirac}
+\end{equation}
+en donde $\pmb{p } = i \frac{\partial}{\partial \pmb{r}}$ y las matrices $\gamma$ son de dimensi\'on $4 \times 4$ las cuales est\'an dadas en el caso de fermiones \cite{Martin-2004}:
+\begin{equation}
+	\gamma_i = 
+	\begin{bmatrix}
+		0         & \sigma_i \\
+		-\sigma_i &    0
+	\end{bmatrix},~~i=1,2,3~~y~~
+	\gamma_0 =
+	\begin{bmatrix}
+		\pmb{1}    &   0 \\
+		0       &  \pmb{1}
+	\end{bmatrix} \label{ec:GammaMatr}
+\end{equation}
+y en donde $\sigma_i$ son las matrices de Pauli y $\pmb{1}$ es la matriz diagonal unitaria de tama\~no $2 \times 2$.
+\newline
+\par La soluci\'on tiene la forma \cite{doi:10.1098/rspa.1928.0056}
+\begin{equation}
+	\psi(x^{\mu}) = e^{-i E t /\hbar} 
+	\begin{pmatrix}
+		\psi(\pmb{r}) \\
+		\chi(\pmb{r})
+	\end{pmatrix} \label{ec:solDir},
+\end{equation}
+en donde $x^{\mu} = (\pmb{r},t)$ y $\psi (\pmb{r})$ y $\chi (\pmb{r})$ son las dos componentes del spinor que describen la dependencia espacial y de spin, entonces la ecuaci\'on de Dirac \ref{ec:Dirac} se convierte en ecuaciones acopladas para $\psi$ y  $\chi$ \cite{Martin-2004}:
+\begin{eqnarray}
+	c (\sigma \cdot \pmb{p}) \chi &=& (E-m c^2) \psi \nonumber \\
+	c (\sigma \cdot \pmb{p}) \psi &=& (E+m c^2) \chi. \label{ec:sistEqDirac}
+\end{eqnarray}
+Las ecuaciones para la interacci\'on de un electr\'on con campos el\'ectrico y magn\'etico se puede derivar remplazando $\pmb{p} \rightarrow \pmb{\pi} = \pmb{p}-(e/c) \pmb{A}$ y $m c^2 \rightarrow mc^2 + e V$,  donde $\pmb{A}$ y $V$ son el potencial vectorial y escalar respectivamente \cite{MB-2015}. En el caso de materia condensada, al igual que con al ecuaci\'on de Schr\"odinger, tambi\'en es necesario hacer una aproximaci\'on utilizando solo a los electrones, adem\'as solo se utilizan contribuciones de segundo orden en  la velocidad de la luz $c^{-2}$, las cuatro componentes del spinor en la ecuaci\'on de Dirac (ec. \ref{ec:Dirac}) se desacoplan y se obtiene el Hamiltoniano  de Pauli \cite{MB-2015, pauli_1927}, el cual es quasi-relativista y cuya expresi\'on es:
+\begin{multline}
+	\hat{H}_{Pauli} = \sum_{j=1}^{N} \left\{\frac{1}{2 m_e} [\pmb{p}_j + e \pmb{A} (\pmb{r}_j)]^2 + V_{ext} (\pmb{r}_j)- e V (\pmb{r}_j)\right.\\ \left. {} -\frac{\hbar e}{2 i  (2 m_e c)^2} \pmb{p}_j \cdot [\pmb{E}_{ext} (\pmb{r}_j) + \pmb{E} (\pmb{r}_j)] - \frac{1}{2 m_e (2 m_e c)^2} [\pmb{p}_j + e \pmb{A} (\pmb{r}_j)]^4 \right. \\
+	\left. {} + \frac{e}{2 (m_e c)^2} \pmb{s}_j \cdot ([\pmb{E}_{ext} (\pmb{r}_j) + \pmb{E} (\pmb{r}_j)] \times [\pmb{p}_j + e \pmb{A} (\pmb{r}_j)]  ) \right. \\
+	\left. {} + \frac{e}{m_e} \pmb{s}_j \cdot \pmb{B} (\pmb{r}_j) \right\} \label{ec:HamilDirac},
+\end{multline}    
+en donde $\pmb{E}_{ext}$ es el campo el\'ectrico inducido por el potencial externo \cite{PhysRev.78.29}:
+\begin{equation}
+	\pmb{E}_{ext} (\pmb{r}) = - \frac{1}{e} \nabla V_{ext} (\pmb{r}) \label{ec:Eext},
+\end{equation}
+con el potencial externo $V_{ext}$ definido por la ecuaci\'on \ref{ec:shVex}. Adem\'as existe un campo electromagn\'etico cuyas componentes $\pmb{E} (\pmb{r})$ y $\pmb{B} (\pmb{r})$ est\'an descritas por el potencial escalar $V(\pmb{r})$ y  vectorial $\pmb{A} (\pmb{r})$ de acuerdo con \cite{PhysRev.78.29}:
+\begin{eqnarray}
+	\pmb{E} (\pmb{r}) &=& - \nabla V(\pmb{r}) - \frac{\partial}{\partial t} \pmb{A} (\pmb{r}), \nonumber \\
+	\pmb{B} (\pmb{r}) &=& \nabla \times \pmb{A} (\pmb{r}) \label{ec:camposElectromageticos},
+\end{eqnarray}
+los cuales act\'uan en los electrones.
+\newline
+\par Formalmente el Hamiltoniano de Pauli (Ec. \ref{ec:HamilDirac}) no contiene la interacci\'on electr\'on-electr\'on de forma explicita,  pero se puede introducir  por medio de los campos electromagn\'eticos $\pmb{E} (\pmb{r})$ y $\pmb{B} (\pmb{r})$ los cuales son generados por el movimiento de los electrones en el sistema, para evitar el conteo doble de interacciones de pares el t\'ermino $-e V (\pmb{r})$ se remplaza por $-\frac{e}{2} V(\pmb{r})$ si $V (\pmb{r})$ est\'a dado por  una interacci\'on de Coulomb entre dos electrones.
+\newline
+\par Los electrones en la posici\'on $\pmb{r}_j$ da lugar al operador de densidad de electrones \cite{MB-2015}
+\begin{equation}
+	\hat{n} (\pmb{r}) = \sum_{j=1}^{N} \delta (\pmb{r}- \pmb{r}_j) \label{ec:Reln}
+\end{equation}
+y cada electr\'on posee un operador velocidad
+\begin{equation}
+	\pmb{v}_j = \frac{i}{\hbar} [\hat{H},\pmb{r}_j]_- \label{ec:Relv},
+\end{equation}
+el cual da lugar a un operador de densidad de corriente
+\begin{equation}
+	\hat{\pmb{j}} (\pmb{r}) = \frac{1}{2} \sum_{j=1}^{N} [\pmb{v}_j, \delta (\pmb{r}-\pmb{r}_j)]_+ , \label{ec:Relj}
+\end{equation}
+en donde los corchetes en las ecuaciones \ref{ec:Relv} y \ref{ec:Relj} \cite{Martin-2004}
+\begin{equation}
+	[\hat{A},\hat{B}]_{\mp} = \hat{A} \hat{B} \mp \hat{B} \hat{A} \label{ec:conm}
+\end{equation} 
+donde $(-)$ denota un conmutador y  $(+)$ un anti conmutador entre los operadores $\hat{A}$ y $\hat{B}$.
+\newline
+\par Los campos  $\pmb{E} (\pmb{r})$ y $\pmb{B} (\pmb{r})$ inducidos por el movimiento de los electrones se describen con las ecuaciones de Maxwell en el vac\'io con las fuentes $\hat{n} (\pmb{r})$ y $\pmb{\hat{j}} (\pmb{r})$. para estos potenciales (ec. \ref{ec:camposElectromageticos}) se asume que cumplen con la condici\'on de invariancia de Coulomb \cite{MB-2015}
+\begin{equation}
+	\nabla \cdot \pmb{A} (\pmb{r}) = 0. \label{ec:CoulombGauge}
+\end{equation}
+Entonces el potencial escalar se puede obtener con la ecuaci\'on de Laplace \cite{Jackson-1975}
+\begin{equation}
+	\nabla^2 V(\pmb{r}) = \frac{e}{\varepsilon_0} \hat{n} (\pmb{r}), \label{ec:poisson}
+\end{equation}
+y entonces el potencial est\'a dado por \cite{Jackson-1975}:
+\begin{equation}
+	V(\pmb{r}) = - \frac{e}{4 \pi \varepsilon_0} \int_{\Omega} d \pmb{r'} \frac{\hat{n} (\pmb{r'})}{|\pmb{r}-\pmb{r'}|}= - \frac{1}{e} \sum_{j=1}^{N} v(\pmb{r}-\pmb{r}_j). \label{ec:solPoisson}
+\end{equation}
+\newline
+El potencial vectorial se obtiene de la ecuaci\'on de onda \cite{Jackson-1975} 
+\begin{equation}
+	\nabla^2 \pmb{A} (\pmb{r}) - \frac{1}{c^2} \frac{\partial^2 }{\partial t^2} \pmb{A} (\pmb{r}) = \mu_0 e \pmb{\hat{j}} (\pmb{r}) + \frac{1}{c^2} \frac{\partial}{\partial t} \nabla V(\pmb{r}) \label{ec:ecOnda}  
+\end{equation}
+en donde $\mu_0 = 4 \pi \times10^{-7} Vs/Am$ es la permeabilidad del vac\'io.
+\newline
+\par De acuerdo con la ecuaci\'on \ref{ec:ecOnda} el potencial vectorial $\pmb{A} (\pmb{r})$ est\'a influenciado por los efectos de retardaci\'on y es as\'i mismo un funcional del potencial vectorial dado que el Hamiltoniano (ec. \ref{ec:HamilDirac}) que determina la velocidad de las part\'iculas (ec. \ref{ec:Relv}) aparece en la definici\'on de el operador de la densidad de corriente (ec. \ref{ec:Relj}), es posible tratar este problema de forma auto consistente. Dado que se expandi\'o  hasta las correcciones de segundo orden $~ c^{-2}$  se pueden desestimar las primeras correcciones relativistas de la energ\'ia cin\'etica  y la interacci\'on de spin- \'orbita y  se tiene una expresi\'on para la velocidad de la part\'icula \cite{flugge_quantum_1957}
+\begin{equation}
+	\hat{v}_j = \frac{1}{m} \left\{\pmb{p}_j + e \pmb{A} (\pmb{r}_j) + \frac{2i}{\hbar} (\pmb{p}_j \times \pmb{s}_j) \right\} \label{ec:vel_corr},
+\end{equation}  
+en donde los dos primeros t\'erminos se relacionan con el momento electromagn\'etico  del electr\'on y el tercero se relaciona con el movimiento del spin, considerando esto es posible dividir en tres contribuciones al operador de densidad de corriente\cite{flugge_quantum_1957}
+\begin{equation}
+	\hat{\pmb{j}} (\pmb{r}) = \hat{\pmb{j}}_p (\pmb{r}) + \hat{\pmb{j}}_d (\pmb{r}) + \hat{\pmb{j}}_s (\pmb{r}) \label{ec:divJ},
+\end{equation}
+en donde
+\begin{equation}
+	\hat{\pmb{j}}_p (\pmb{r}) = \frac{1}{2m} \sum_{j=1}^{N} [\pmb{p}_j , \delta(\pmb{r}-\pmb{r}_j)]_+ \label{ec:Jpara} 
+\end{equation} 
+es la densidad de corriente paramagn\'etica,
+\begin{equation}
+	\hat{\pmb{j}}_d (\pmb{r}) = \frac{e}{m} \hat{n} (\pmb{r}) \pmb{A} (\pmb{r}) \label{ec:Jdia}
+\end{equation}
+es la densidad de corriente diamagn\'etica y 
+\begin{equation}
+	\hat{\pmb{j}}_s  (\pmb{r}) = \frac{1}{m} \nabla \times \hat{\pmb{s}}_j (\pmb{r}) \label{ec;Jspin}
+\end{equation}
+es la densidad de corriente de spin, en donde el operador de spin est\'a dado por
+\begin{equation}
+	\hat{\pmb{s}} (\pmb{r}) =\frac{\hbar}{2} \sum_{j=1}^{N} \delta (\pmb{r}- \pmb{r}_j) \pmb{\sigma}. \label{ec:SpinOp}
+\end{equation}
+Debido a las restricciones de los t\'erminos $c^{-2}$ la contribuci\'on diamagn\'etica se puede despreciar, si se incluyen los efectos de retardaci\'on la soluci\'on de la ecuaci\'on \ref{ec:ecOnda} se puede escribir como \cite{flugge_quantum_1957}
+\begin{equation}
+	\pmb{A}^{(1)} (\pmb{r}) = - \frac{\mu_0 e}{8 \pi m} \sum_{j=1}^{N} \left\{\frac{\pmb{a}_j}{|\pmb{r}-\pmb{r}_j|} + \frac{[\pmb{a}_j \cdot (\pmb{r}-\pmb{r}_j)] (\pmb{r}- \pmb{r}_j)}{|\pmb{r}-\pmb{r}_j|^3} \right\}, \label{ec:SolecOnda}
+\end{equation}
+con el operador generalizado de la velocidad
+\begin{equation}
+	\pmb{a}_j = \frac{1}{m} \pmb{p}_j + \frac{2 i }{m \hbar} (\pmb{p}_j \times \pmb{s}_j) \label{ec:genVelocity}
+\end{equation}
+este operador se introduce en la energ\'ia cin\'etica y el acople entre el spin y el campo magn\'etico en el Hamiltoniano de Pauli \ref{ec:HamilDirac}. 
+
+\section{Componentes relativistas y no relativistas} \label{subsec:rel_norel}
+El Hamiltoniano de pauli (ec. \ref{ec:HamilDirac}) se puede dividir en \cite{MB-2015}
+\begin{equation}
+	\hat{H} = \hat{H}_0 + \hat{H}_{sr} + \hat{H}_{so} + \hat{H}_{B}. \label{ec:divHamDirac}
+\end{equation} 
+La primera contribuci\'on es el Hamiltoniano  no relativista \cite{MB-2015}
+\begin{equation}
+	\hat{H}_0 = \sum_{j=1}^{N} \left\{\frac{1}{2m} \pmb{p}_j ^2 + V_{ext} (\pmb{r}_j) \right\} + \frac{1}{2} \sum_{\substack{i,j = 1 \\ (i \not = j)}}^{N} v(\pmb{r}_i -\pmb{r}_j), \label{ec:HamnoRel}
+\end{equation} 
+que contiene la interacci\'on longitudinal  electr\'on-electr\'on utilizando el potencial de coulomb, el siguiente t\'ermino corresponde a las correcciones relativistas escalares que son los t\'erminos de Darwin y de correcci\'on de masa \cite{MB-2015,Martin-2004}
+\begin{equation}
+	\hat{H}_{sr} = \frac{1}{2 (2 m c)^2} \sum_{j=1}^{N} \left\{\hbar^2 \nabla^2 [V_{ext} (\pmb{r})-e V(\pmb{r})]_{\pmb{r}= \pmb{r}_j} - \frac{1}{m} \pmb{p}_j ^4 \right\}, \label{ec:HamSR}
+\end{equation}
+el tercer t\'ermino es el  acople spin-\'orbita \cite{MB-2015,Martin-2004} 
+\begin{equation}
+	\hat{H}_{so} = -\frac{1}{2 (2 m c)^2} \sum_{j=1}^{N} \pmb{s}_j \cdot \left\{\nabla [V_{ext} (\pmb{r})-e V(\pmb{r})]_{\pmb{r}=\pmb{r}_j} \times \pmb{p}_j \right\} \label{ec:HamSo}
+\end{equation}
+y por \'ultimo se tiene al Hamiltoniano de Breit, el cual est\'a relacionado con la interacci\'on transversal de electr\'on-electr\'on, este Hamiltoniano no esta relacionado con la interacci\'on de Coulomb y su expresi\'on es \cite{MB-2015, Scott_1980}
+\begin{equation}
+	\hat{H}_B= \frac{e}{m} \sum_{j=1}^N \left\{\pmb{A}^{(1)} (\pmb{r}_j) \cdot \pmb{p}_j + \frac{1}{2} e \left[\pmb{A}^{(1)} (\pmb{r}_j)\right]^2 + \pmb{s}_j \cdot \pmb{B}^{(1)} (\pmb{r}_j) \right\}. \label{ec:HamBreit}
+\end{equation}
+El t\'ermino $\left[\pmb{A}^{(1)} (\pmb{r}_j)\right]^2 $ se puede omitir y por lo tanto las contribuciones diamagn\'eticas no se toman en cuenta .
+\newline
+Para un campo magn\'etico casi homog\'eneo se tiene la expresi\'on aproximada \cite{MB-2015, Scott_1980}
+\begin{equation}
+	\pmb{A}^{(1)} (\pmb{r}) = \frac{1}{2} \pmb{B}^{(1)} (\pmb{r}) \times \pmb{r}, \label{ec:Aaprox}
+\end{equation}
+entonces la contribuci\'on de Breit (ec. \ref{ec:HamBreit}) toma la forma \cite{Scott_1980}
+\begin{equation}
+	\hat{H}_B = \frac{e}{2m} \sum_{j=1}^N (\pmb{l}_j + 2 \pmb{s}_j) \cdot \pmb{B}^{(1)} (\pmb{r}_j), \label{ec:BreitCorr}
+\end{equation}
+donde el operador de momento angular $\pmb{l}= \pmb{r} \times \pmb{p}$ de un electr\'on  individual. Utilizando el operador de momento magn\'etico
+\begin{equation}
+	\pmb{m}_j = - \frac{1}{\hbar} \mu_{B} (\pmb{l}_j + 2 \pmb{s}_j) \label{ec:opMagn}
+\end{equation}
+de un electr\'on $j ~~(j=1,...,N)$  se puede reescribir el Hamiltoniano de Breit (ec. \ref{ec:BreitCorr}) 
+\begin{equation}
+	\hat{H}_B = -\sum_{j=1}^N \pmb{m}_j \cdot \pmb{B}^{(1)} (\pmb{r}_j), \label{ec:BreitCorr2}
+\end{equation} 
+debido a que $\pmb{m}_j$ y $\pmb{B}^{(1)} (\pmb{r}_j)$ son operadores la aproximaci\'on \ref{ec:BreitCorr2} permite dar una interpretaci\'on f\'isica de la contribuci\'on de Breit \cite{Scott_1980}.
+\newline
+\par En general el potencial vectorial (ec. \ref{ec:SolecOnda}) y el campo magn\'etico resultante (ec. \ref{ec:camposElectromageticos}) se puede dividir en contribuciones orbitales y de spin de acuerdo a la corriente paramagn\'etica y de spin \cite{MB-2015},
+\begin{eqnarray}
+	\pmb{A}_{orbita} (\pmb{r}) &=&- \frac{\mu_0 e}{8 \pi m} \sum_{j=1}^N \left\{\frac{\pmb{p}_j}{|\pmb{r}-\pmb{r}_j|} + \frac{[\pmb{p}_j \cdot (\pmb{r}-\pmb{r}_j)](\pmb{r}-\pmb{r}_j)}{|\pmb{r}-\pmb{r}_j|^3} \right\}, \nonumber \\
+	\pmb{B}_{orbita} (\pmb{r}) &=& \frac{\mu_0 e}{4 \pi m} \sum_{j=1}^N \frac{(\pmb{r}-\pmb{r}_j)}{|\pmb{r}-\pmb{r}_j|^3}, \nonumber \\
+	\pmb{A}_{spin} (\pmb{r}) &=& \frac{\mu_0 e}{4 \pi m} \sum_{j=1}^N \frac{(\pmb{r}-\pmb{r}_j)}{|\pmb{r}-\pmb{r}_j|^3} \times \pmb{s}_j, \\
+	\pmb{B}_{spin} (\pmb{r}) &=&- \frac{\mu_0 e}{4 \pi m} \sum_{j=1}^N \left\{\frac{\pmb{s}_j}{|\pmb{r}-\pmb{r}_j|^3} -3 \frac{[\pmb{s}_j \cdot (\pmb{r}-\pmb{r}_j)](\pmb{r}-\pmb{r}_j)}{|\pmb{r}-\pmb{r}_j|^5} \right\}. \nonumber 
+\end{eqnarray} 
+Estos campos permiten re escribir la expresi\'on \ref{ec:HamBreit} \cite{Scott_1980}   
+\begin{equation}
+	\hat{H}_B= \frac{e}{2m} \sum_{j=1}^N \left\{\pmb{A}_{orbita} (\pmb{r}_j) \cdot \pmb{p}_j + \pmb{A}_{spin} (\pmb{r}_j) \cdot \pmb{p}_j + \pmb{B}_{orbita} (\pmb{r}_j) \cdot \pmb{s}_j +\pmb{B}_{spin} (\pmb{r}_j) \cdot \pmb{s}_j \right\} \label{ec:breitHam},
+\end{equation}
+donde se introduce el factor $\frac{1}{2}$ para considerar el doble conteo de interacciones pares en sistemas magn\'eticos o con polarizaci\'on de spines. El primer t\'ermino es una correcci\'on de la interacci\'on entre dipolos magn\'eticos de los electrones, los cuales resultan del movimiento orbital de los electrones. El segundo y tercer t\'ermino est\'an relacionados con las interacciones spin-\'orbita y \'orbita-spin en adici\'on de la interacci\'on spin-\'orbita expresada en la ecuaci\'on \ref{ec:HamSo} que se relaciona con los campos el\'ectricos internos que describen el acople entre momentos magn\'eticos orbitales y momentos magn\'eticos de spin. El \'ultimo t\'ermino representa la interacci\'on spin-spin entre momentos magn\'eticos y el cual tiene la forma de la interacci\'on dipolo-dipolo magn\'etico. El Hamiltoniano de Breit se puede re escribir como \cite{Scott_1980}
+\begin{multline}
+	\hat{H}_B = \frac{e^2}{4 \pi \varepsilon_0} \frac{1}{(2 m c)^2} \sum_{\substack{i,j = 1 \\ (i \not = j)}} \left\{- \frac{1}{|\pmb{r}_i-\pmb{r}_j|} \left[\pmb{p}_i \cdot \pmb{p}_j + \frac{[\pmb{p}_i \cdot (\pmb{r}_i-\pmb{r}_j)][\pmb{p}_j \cdot (\pmb{r}_i-\pmb{r}_j)]}{|\pmb{r}_i-\pmb{r}_j|^2} \right] \right. \\ \left. {} + \frac{4}{|\pmb{r}_i-\pmb{r}_j|^2} \pmb{s}_j \cdot \left(\frac{\pmb{r}_i-\pmb{r}_j}{|\pmb{r}_i-\pmb{r}_j|} \times \pmb{p}_j \right) \right. \\
+	\left. {} + \frac{2}{|\pmb{r}_i-\pmb{r}_j|^3} \left[\pmb{s}_i \cdot \pmb{s}_j - 3 \frac{[\pmb{s}_i \cdot (\pmb{r}_i - \pmb{r}_j)][\pmb{s}_j \cdot (\pmb{r}_i - \pmb{r}_j)] }{|\pmb{r}_i-\pmb{r}_j|^2} \right] \right\}. \label{ec:HamBreit2}
+\end{multline}
+
+\section{Tratamiento de las correcciones relativistas } \label{subsec:tratamientoRel}
+La parte mas importante del Hamiltoniano de Pauli es interacci\'on $\hat{H}_0$ ( Ec. \ref{ec:HamnoRel}), en muchos c\'odigos utilizados para realizar c\'alculos de primeros principios (incluido Quantum-Espresso) se incluyen adem\'as  correcciones relativistas escalares $\hat{H}_{sr}$ (Ec. \ref{ec:HamSR} ) y de acople spin-\'orbita (Ec. \ref{ec:HamSo}). Debido a que las correcciones relativistas escalares  y de acople spin \'orbita son muy peque\~nas $\hat{H}_{sr},~\hat{H}_{so} \sim c^{-2}$  es necesario realizar una nueva aproximaci\'on partiendo del remplazo operador de campo el\'ectrico $\pmb{E} (\pmb{r}) $ por su valor de expectaci\'on $ \langle \pmb{E} (\pmb{r}) \rangle = \langle \Psi | \pmb{E} (\pmb{r}) | \Psi \rangle $ y por lo tanto  las fluctuaciones $\Delta \pmb{E} (\pmb{r}) = \pmb{E} (\pmb{r}) - \langle \pmb{E} (\pmb{r}) \rangle $ no est\'an siendo consideradas y el potencial de interacci\'on entre los electrones $-e V (\pmb{r})$ es sustituido por su valor de expectaci\'on $ \langle V (\pmb{r}) \rangle = \langle \Psi | V (\pmb{r}) | \Psi \rangle $, entonces en  las correcciones relativistas $V_{ext} (\pmb{r}) - e V(\pmb{r})$ son remplazadas por un potencial efectivo  $V_{eff}^{sr} (\pmb{r})$ y $V_{eff}^{sr} (\pmb{r}) \approx V_{ext} (\pmb{r}) -e V (\pmb{r}) $ es calculado utilizando una aproximaci\'on al potencial de Hartree y la contribuci\'on de intercambio y correlaci\'on \cite{MB-2015}. En lugar de la Ec.  \ref{ec:HamSR} se tiene la siguiente expresi\'on \cite{Koelling_1977}:
+\begin{equation}
+	\hat{H}_{sr} = \frac{1}{2 (2mc)^2} \sum_{j=1}^N \left\{\hbar^2 \nabla^2  V_{eff}^{sr} (\pmb{r}) |_{\pmb{r}= \pmb{r}_j} - \frac{1}{m} \pmb{p}_j^4\right\}. \label{ec:HamSR_Mean}
+\end{equation}
+Y en el caso de la interacci\'on spin-\'orbita \cite{PhysRevB.64.073106}
+\begin{equation}
+	\hat{H}_{so} =- \frac{1}{2 (mc)^2} \sum_{j=1}^N \pmb{s}_j \cdot \left\{ \nabla  V_{eff}^{sr} (\pmb{r}) |_{\pmb{r}= \pmb{r}_j} \times \pmb{p}_j\right\}, \label{ec:HamSO_mean}
+\end{equation}
+en donde el gradiente de $V_{eff}^{sr} (\pmb{r})$ indica los efectos relativistas del movimiento del electr\'on cerca del n\'ucleo, de acuerdo con la ecuaci\'on \ref{ec:shVex}  se puede descomponer como \cite{PhysRevB.64.073106}
+\begin{equation}
+	V_{eff}^{sr} (\pmb{r}) = \sum_{I=1}^{N_n} \tilde{V}_{eff}^{sr} (|\pmb{r}- \pmb{R}_I|), \label{ec:descVeffSR}
+\end{equation}  
+con las contribuciones $\tilde{V}_{eff}^{sr} (|\pmb{r}|)$ se asumen que tienen simetr\'ia esf\'erica cerca de la posici\'on del n\'ucleo $\pmb{R}_I$. Con $\nabla  \tilde{V}_{eff}^{sr} (r) = \frac{1}{r} \left[\frac{d}{dr} \tilde{V}_{eff}^{sr} (r) \right]$ y con la abreviaci\'on $r = |\pmb{r}|$ el Hamiltoniano de spin-\'orbita (ec. \ref{ec:HamSO_mean}) se puede escribir como \cite{PhysRevB.64.073106}
+\begin{equation}
+	\hat{H}_{so} =- \frac{1}{2 (mc)^2} \sum_{I=1}^{N_n} \sum_{j=1}^N \frac{1}{r} \frac{d}{dr} \tilde{V}_{eff}^{sr} (r) |_{r=|\pmb{r}_j -\pmb{R}_I|} \pmb{s}_j \cdot \pmb{l}_{j,I}  \label{ec:HamSO_mean_esf} ,
+\end{equation}
+con el operador de momento angular $\pmb{l}_{j,I} = (\pmb{r}_j - \pmb{R}_I) \times \pmb{p}_j$ de un electr\'on $j$ y un n\'ucleo $I$. Esta representaci\'on de la interacci\'on spin-\'orbita sugiere una unificaci\'on con la energ\'ia potencial de los electrones debido a su interacci\'on con los n\'ucleos porque en t\'erminos de la Ec. \ref{ec:HamSO_mean_esf} el potencial externo  $V_{ext} (\pmb{r}) $ (Ec. \ref{ec:shVex}) se puede generalizar a un potencial dependiente del spin $\tilde{V}_{ext} (\pmb{r}, \pmb{s})$ el cual proviene de la suma sobre las posiciones de los n\'ucleos. El uso de este potencial tiene como principal problema el requerimiento de utilizar un tratamiento no colineal para $\pmb{s}$ y se requiere una evaluaci\'on auto consistente para $V(\pmb{r})$. Para la implementaci\'on en un c\'odigo se utiliza una aproximaci\'on local del factor $\frac{1}{r} \tilde{V}_{eff}^{sr} (r) $ \cite{MB-2015, PhysRevB.64.073106}. Utilizando el hecho de que s\'olo la regi\'on cercana al n\'ucleo contribuye se restringe el c\'alculo de  la interacci\'on spin-\'orbita a una regi\'on dentro de una esfera alrededor del n\'ucleo \cite{PhysRevB.62.11556}.
+\newline
+\par Para la interacci\'on de Breit, debido a que es muy peque\~na, tambi\'en se utiliza una aproximaci\'on de campo medio. Partiendo de la expresi\'on  \ref{ec:BreitCorr2} que describe esta energ\'ia en funci\'on del momento magn\'etico $\pmb{m}_j$ (Ec. \ref{ec:opMagn}) de los electrones, estos dipolos magn\'eticos generan un campo magn\'etico $\pmb{B}^{(1)} (\pmb{x}) $ de acuerdo con la expresi\'on \cite{MB-2015, Jackson-1975}
+\begin{equation}
+	\pmb{B}^{(1)} (\pmb{r}) = - \frac{\mu_0}{4 \pi } \sum_{j=1}^N \left[ \frac{\pmb{m}_j}{|\pmb{r}-\pmb{r}_j|^3} - 3 \frac{[\pmb{m}_j \cdot (\pmb{r}-\pmb{r}_j)](\pmb{r}-\pmb{r}_j)}{|\pmb{r}-\pmb{r}_j|^5} \right]. \label{ec:B1}
+\end{equation} 
+Introduciendo esta ecuaci\'on en la expresi\'on \ref{ec:BreitCorr2} con un factor de $\frac{1}{2}$ para evitar el doble conteo de interacciones, se puede encontrar la siguiente expresi\'on para la interacci\'on de Breit \cite{PhysRevB.59.4699}
+\begin{equation}
+	\hat{H}_B = - \frac{\mu_0}{8 \pi } \sum_{\substack{i,j = 1 \\ (i \not = j)}}^N \left[ \frac{\pmb{m}_i \cdot \pmb{m}_j}{|\pmb{r}-\pmb{r}_j|^3} - 3 \frac{[\pmb{m}_i \cdot (\pmb{r}_i-\pmb{r}_j)][\pmb{m}_j \cdot (\pmb{r}-\pmb{r}_j)]}{|\pmb{r}_i-\pmb{r}_j|^5} \right]. \label{ec:BreitCorr3}
+\end{equation}
+El cual corresponde a una interacci\'on cl\'asica de dipolos magn\'eticos \cite{PhysRevB.59.4699, Jackson-1975}. Una aproximaci\'on de campo medio es remplazar el operador del dipolo $\pmb{m}_j$ por su valor de expectaci\'on $\langle \pmb{m}_j \rangle$, entonces el valor de expectaci\'on de l Hamiltoniano de Breit $\hat{H}_B$ describe una energ\'ia de interacci\'on cl\'asica \cite{Jackson-1975}.

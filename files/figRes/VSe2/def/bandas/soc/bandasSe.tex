@@ -1,0 +1,51 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.16}
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[
+			view={0}{90},
+			enlargelimits=false,
+			axis on top,
+			xtick={1, 31, 60,90},
+			xticklabels={$\Gamma$,$M$,$K$,$\Gamma$},
+			xmin=1, xmax=90,
+			ymin=-3, ymax=1.6,
+			zmin=1, zmax=3,
+			ylabel=$(E-E_F) ~(eV)$,
+			legend style={nodes={scale=0.5, transform shape}, font=\large, draw=none}
+			]
+			\addplot3 [only marks, mark size=0.7, blue, raw gnuplot, id=pdosv] gnuplot { splot "k_V_dos_d_j15.dat" u 1:($2+0.437):3 w points;
+			};
+			
+			\addlegendentry{$V_d$}
+			\addplot3 [only marks, mark size=0.7, brown, raw gnuplot, id=pdos] gnuplot { splot "k_Se_dos_p_j15_vac.dat" u 1:($2+0.437):3 w l;
+			};
+		    
+			\addlegendentry{$Se_p ~vacancia$}
+			\addplot3 [only marks, mark size=0.7, red, raw gnuplot, id=pdosd] gnuplot { splot "k_Se_dos_p_j15.dat" u 1:($2+0.437):3 w points;
+			};
+		    
+			\addlegendentry{$Se_p$}
+			
+			\addplot3 [only marks, mark size=0.7, blue, raw gnuplot, id=pdosv] gnuplot { splot "k_V_dos_d_j25.dat" u 1:($2+0.437):3 w points;
+			};
+			\addplot3 [only marks, mark size=0.7, brown, raw gnuplot, id=pdos] gnuplot { splot "k_Se_dos_p_j05_vac.dat" u 1:($2+0.437):3 w l;
+			};
+		    \addplot3 [only marks, mark size=0.7, red, raw gnuplot, id=pdosd] gnuplot { splot "k_Se_dos_p_j05.dat" u 1:($2+0.437):3 w points;
+		    };
+	        
+			
+			
+			\addplot[color=black] coordinates {(1,3.3) (1,-3)};
+			\addplot[color=black] coordinates {(31,3.3) (31,-3)};
+			\addplot[color=black] coordinates {(60,3.3) (60,-3)};
+			\addplot[color=black] coordinates {(90,3.3) (90,-3)};
+			\addplot [color=black, dotted]coordinates{(0,0) (90,0)};
+			
+		\end{axis}
+	    
+	\end{tikzpicture}
+    
+\end{document}

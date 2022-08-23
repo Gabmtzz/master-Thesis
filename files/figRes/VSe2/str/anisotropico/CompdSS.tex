@@ -1,0 +1,27 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={nodes={scale=0.5, transform shape}, font=\large, draw=none},
+	legend pos= north west,
+	xlabel=$\varepsilon_x$,
+	ylabel=$\Delta (Se-Se) (\AA)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=blue, solid]{
+		plot "dS1" u 1:4 w linespoints;
+	};\addlegendentry{$\Delta SeSe_{1}$}
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=red, solid]{
+		plot "dS2" u 1:4 w linespoints;
+	};\addlegendentry{$\Delta SeSe_{2}$}
+    \addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=brown, solid]{
+    	plot "promdS" u 1:5 w linespoints;
+    };\addlegendentry{$prom. ~ \Delta SeSe$}
+
+	\end{axis}
+
+	
+	\end{tikzpicture}
+\end{document}

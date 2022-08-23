@@ -1,0 +1,82 @@
+\documentclass{beamer}
+%\documentclass{beamer}
+\usetheme{JuanLesPins}
+\usepackage{epsfig, graphics, graphicx,subfigure, amsmath}
+\usepackage[spanish,es-tabla]{babel}
+\decimalpoint
+\usepackage{gensymb}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\makeatletter
+\newcommand\titlegraphicii[1]{\def\inserttitlegraphicii{#1}}
+\titlegraphicii{}
+\setbeamertemplate{title page}
+{
+	\vbox{}
+	{\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\hfill\inserttitlegraphicii\par}
+	\begin{centering}
+		\begin{beamercolorbox}[sep=8pt,center]{institute}
+			\usebeamerfont{institute}\insertinstitute
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center]{title}
+			\usebeamerfont{title}\inserttitle\par%
+			\ifx\insertsubtitle\@empty%
+			\else%
+			\vskip0.25em%
+			{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+			\fi%     
+		\end{beamercolorbox}%
+		\vskip1em\par
+		\begin{beamercolorbox}[sep=8pt,center]{author}
+			\usebeamerfont{author}\insertauthor
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center]{date}
+			\usebeamerfont{date}\insertdate
+		\end{beamercolorbox}%\vskip0.5em
+		
+	\end{centering}
+	%\vfill
+}
+
+%
+\titlegraphic{\includegraphics[scale=0.2]{portada/escudouaslp.png}}
+\titlegraphicii{\includegraphics[scale=0.15]{portada/escudofciencias.png}}
+\title{Estudio te\'orico de propiedades magn\'eticas en [Pt,V] (Se,S)\textsubscript{2} y experimentación de efecto Kerr en CoFeB}
+\subtitle{Cuarto avance de tesis}
+\author{Gabriel adona\'i Mart\'inez Zepeda\\ \textbf{Asesor:} Dr. Ra\'ul Balderas}
+\institute{Universidad Aut\'onoma de San Luis Potos\'i\\ Facultad de Ciencias}
+\date{\today}
+
+
+%
+
+\usepackage[backend=bibtex,style=numeric, defernumbers=true]{biblatex}
+\bibliography{refInt,refKerr,refMet,refSim,refRel}
+\setbeamertemplate{bibliography item}{}
+\includeonly{kerr,montaje, analisis, mediciones,concl}
+
+\setbeamertemplate{footline}[frame number]
+\begin{document}
+	\frame[plain]{\titlepage}
+	\frame{
+		\frametitle{Contenidos}
+		\tableofcontents
+		\nocite{Kerr_1888,mo_2004,MOp-2008,MOp-1997,fuji_2005, Hoffmann_2019}
+	}
+	\include{kerr}
+	\include{montaje}
+	\include{analisis}
+	\include{mediciones}
+	\include{concl} 
+	\section{Bibliograf\'ia}
+	\frame{
+		\frametitle{Bibliograf\'ia}
+		
+		\printbibliography
+
+	}
+   \section*{}
+   \frame{
+   	\Large{\centering \bf\textcolor{blue}{ ¡Gracias por su atenci\'on ! }}\\[ 5 mm]
+   }
+\end{document}

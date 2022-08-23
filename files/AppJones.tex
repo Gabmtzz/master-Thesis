@@ -1,0 +1,127 @@
+\chapter{An\'alisis \'optico con matrices de Jones} \label{Jones:App}
+En la subsecci\'on \ref{Met:subsec:MontExp} se muestra el montaje experimental utilizado para observar el efecto Kerr magneto-\'optico, para poder procesar la se\~nal que se obtiene de este montaje es necesario desarrollar el calculo de matrices de Jones para obtener una expresi\'on para la intensidad de la luz que llega al detector, las expresiones para las matrices de los componentes \'opticos utilizados en el an\'alisis se obtienen del libro de Fujiwara \cite{fuji_2005}.
+\newline
+A continuación se mencionan las matrices que se utilizan el el c\'alculo:
+\begin{itemize}
+	\item Para el polarizador inicial $0 \degree $ y el analizador $90 \degree$:
+	\begin{equation}
+	P=
+	\begin{pmatrix}
+	1&0\\
+	0&0
+	\end{pmatrix}
+	\label{Jones:ec:pol}
+	\end{equation}
+	\begin{equation}
+	A=
+	\begin{pmatrix}
+	0&0\\
+	0&1
+	\end{pmatrix}.
+	\label{Jones:ec:An}
+	\end{equation}
+	\item Para el retardador de media onda para cualquier \'angulo $\theta$ la matriz est\'a dada por:
+	\begin{equation}
+	HP(\theta)= e^{\frac{-i \pi}{2}}
+	\begin{pmatrix}
+	cos(\theta)^2 - \sin(\theta)^2 & 2 \cos(\theta) \sin(\theta)\\
+	2 cos(\theta) \sin(\theta)     & \sin(\theta)^2-\cos(\theta)^2
+	\end{pmatrix},
+	\label{Jones:ec:HWP1}
+	\end{equation}
+	si $\theta=-22.5 \degree$:
+	\begin{equation}
+	HP(-22.5\degree)= - \frac{1}{\sqrt{2}} i 
+	\begin{pmatrix}
+	1 & 1\\
+	1  & -1
+	\end{pmatrix}.
+	\label{Jones:ec:HWP2}
+	\end{equation}
+	\item Para el modulador fotoel\'astico debido a que se aplica un retardo de un cuarto de onda, la matriz de Jones est\'a dada por:
+	\begin{equation}
+	PEM= e^{\frac{i \pi}{4}}
+	\begin{pmatrix}
+	e^{i \Psi /2}&0\\
+	0            &i e^{-i \Psi /2}
+	\end{pmatrix},
+	\label{Jones:ec:PEM}
+	\end{equation}
+	con 
+	\begin{equation*}
+	\Psi=\Psi_0 \cos(\omega t),
+	\end{equation*}
+	en donde $\Psi_0$ es el retardo inicial y $\omega=2 \pi f$ con $f$ siendo la frecuencia de operaci\'on del PEM.
+	\item En el caso del beamsplitter es necesario utilizar dos matrices, una para el caso de la refelxi\'on ($BS_r$) y otra para la transmisi\'on ($BS_t$) del haz:
+	\begin{eqnarray}
+	BS_r&=&
+	\begin{pmatrix}
+	\tilde{r}_p &0 \\
+	0   &\tilde{r}_s
+	\end{pmatrix}, \label{Jones:ec:BSr} \\
+	BS_t&=&
+	\begin{pmatrix}
+	\tilde{t}_p &0 \\
+	0   &\tilde{t}_s
+	\end{pmatrix}, \label{Jones:ec:BSt}
+	\end{eqnarray}
+	con los valores complejos $\tilde{r}_{p,s} = r_{p,s} e^{\delta_{p,s}}$ y $\tilde{t}_{p,s} = t_{p,s} e^{\delta_{p,s}}$.
+	\item Para la muestra se supone que es anisotr\'opica debido a la aplicaci\'on del campo magn\'etico y por lo tanto  se utiliza la siguiente matriz de Jones:
+	\begin{equation}
+	M=
+	\begin{pmatrix}
+	\tilde{r}_{pp}&\tilde{r}_{ps}\\
+	\tilde{r}_{ss}&\tilde{r}_{sp}
+	\end{pmatrix},
+	\label{Jones:ec:Muestra}
+	\end{equation}
+	con los valores complejos $\tilde{r}_{pp,ss} = r_{pp,ss} e^{\delta_{pp,ss}}$ y $\tilde{r}_{pp,ss} = r_{ps,sp} e^{\delta_{ps,sp}}$, adem\'as considerando que se desea medir el efecto Kerr longitudinal se considera que $\tilde{r}_{ps}=-\tilde{r}_{sp}$.
+\end{itemize}
+Utilizando las ecuaciones \ref{Jones:ec:pol} - \ref{Jones:ec:Muestra}, se puede escribir la siguiente expresi\'on  para el campo el\'ectrico que llega al detector
+\begin{equation}
+E_{sal} = A \cdot BS_t \cdot M \cdot BS_r \cdot PEM \cdot HP(-22.5 \degree) \cdot P \cdot E_{in} \label{Jones:ec:Esal} 
+\end{equation}
+considerando que la luz que llega al polarizador es no polarizada, la expresi\'on anterior se puede escribir como:
+\begin{equation}
+E_{sal} \propto A \cdot BS_t \cdot M \cdot BS_r \cdot PEM \cdot HP(-22.5 \degree) \cdot P \cdot 
+\begin{pmatrix}
+1\\1
+\end{pmatrix}, \label{Jones:ec:Esal1} 
+\end{equation}
+la intensidad est\'a dada por
+\begin{equation}
+I_{sal}= E_{sal}^{* T} \cdot E_{sal}. \label{Jones:ec:intens}
+\end{equation}
+Introduciendo la ecuaci\'on \ref{Jones:ec:Esal1} en \ref{Jones:ec:intens} y desarrollando el \'algebra se obtiene
+\begin{equation}
+I_{sal} = \frac{t_s ^2}{2}\left( r_s^2 r_{ss}^2 + r_p^2 r_{sp}^2 \right) -r_p r_s r_{ss} r_{sp} t_{s}^2  \cos(\Psi -\delta^{(s)}+\Delta) \label{Jones:ec:Int}
+\end{equation}
+en donde $\delta^{(s)}=\delta_{ss}-\delta_{sp}$ y $\Delta = \delta_p - \delta_s$. Utilizando las identidades de $\cos(a-b)=\cos(a)\cos(b)+ \sin(b)\sin(a)$, $\sin(a+b)= \sin(a)\cos(b)+\cos(a)\sin(b)$ adem\'as de 
+\begin{eqnarray}
+\sin(\Psi_0 \cos(\omega t))&=& 2 \sum_{n=0} J_{2n+1}(\Psi_0) \cos(n \omega t), \nonumber \\
+\cos(\Psi_0 \cos(\omega t)) &=& J_0 (\Psi_0) - 2 \sum_{n=1} J_{2n} (\Psi_0) \cos(2n \omega t), \nonumber
+\end{eqnarray}
+en donde $J_n$ son las funciones de Bessel de orden $n$ \cite{doi:10.1063/1.3669782}, es posible reescribir la ecuaci\'on \ref{Jones:ec:Int} como 
+\begin{multline}
+I_{sal} \approx \frac{t_s ^2}{2}\left( r_s^2 r_{ss}^2 + r_p^2 r_{sp}^2 \right)-r_p r_s r_{ss} r_{sp} t_{s}^2 J_0(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})\sin(\Delta))\\
+-2r_p~ r_s~ r_{ss}~ r_{sp}~ t_{s}^2~ J_{1}(\Psi_0) (\sin(\delta^{(s)}) \cos(\Delta)+cos(\delta^{(s)})\sin(\Delta)) \cos(\omega t) \\
++2 r_p~ r_s ~r_{ss} ~r_{sp}~ t_{s}^2~ J_2(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})sin(\Delta)) \cos(2 \omega t). \label{Jones:ec:IntAprox}
+\end{multline}
+Es posible dividir la ecuaci\'on \ref{Jones:ec:IntAprox} en las componentes relacionadas con la frecuencia  de operaci\'on del PEM y el doble de esta
+\begin{subequations}
+	\begin{gather}
+	I_0=\frac{t_s ^2}{2}\left( r_s^2 r_{ss}^2 + r_p^2 r_{sp}^2 \right)-r_p~ r_s ~r_{ss} ~r_{sp} ~t_{s}^2 J_0(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})\sin(\Delta)) \label{Jones:ec:I0}\\
+	I_1=-2r_p ~r_s~ r_{ss}~ r_{sp} t_{s}^2~ J_{1}(\Psi_0) (\sin(\delta^{(s)}) \cos(\Delta)+\cos(\delta^{(s)})\sin(\Delta)) \label{Jones:ec:I1} \\
+	I_2=2r_p ~r_s ~r_{ss}~ r_{sp} t_{s}^2~ J_2(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})\sin(\Delta)). \label{Jones:ec:I2}
+	\end{gather}
+\end{subequations}
+La ecuaci\'on \ref{Jones:ec:I0}se puede simplificar debido a que $r_{ss} \gg r_{sp}$ y que $\Psi_0 =2.405$ y por lo tanto $J_0(\Psi_0) \approx 0$
+\begin{equation*}
+I_0 \approx \frac{t_s^2~ r_s^2~ r_{ss}^2}{2}.
+\end{equation*}
+Realizando los cocientes $I_2/I_0$ y $I_1/I_0$, utilizando que $\tilde{r}_{ps} / \tilde{r}_{ss} = -  \tilde{r}_{sp} / \tilde{r}_{ss} =(- \theta_k + \eta_k)$ y $tan(\varPsi)=r_p/r_s$ \cite{Kim_1993} se obtienen las siguientes expresiones: 
+\begin{eqnarray}
+I_1/I_0 &=& 4 J_1 (\Psi_0) ~tan(\varPsi) ~(\theta_k ~\sin(\Delta) - \eta_k~ \cos(\Delta)) \label{Jones:ec:divI1}\\
+I_2/I_0 &=& -4 J_2 (\Psi_0) ~tan(\varPsi) ~(\theta_k~\cos(\Delta) + \eta_k ~ \sin(\Delta))\label{Jones:ec:divI2}
+\end{eqnarray}
+\endinput

@@ -1,0 +1,25 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={at={(0.75,0.4)}, nodes={scale=0.7, transform shape},  font=\large, draw=none},
+	%legend pos= north west,
+	xlabel=Energ\'ia $(eV)$,
+	xmax=1.7,	
+	ylabel=$\Delta (grado)$]
+	
+	\addplot [only marks, color=blue] table [
+	red,
+	x expr=1239.4/\thisrow{Wavelength},
+	y=Delta]
+	 {03052021.BSRBN.12h 26mn 13s.txt};
+	 \addlegendentry{datos exp.};
+	 \addplot [mark=none, color=red]table [ x=eV, y=delta] {fit70.dat};
+	 \addlegendentry{ajuste};
+	\end{axis}
+	
+	\end{tikzpicture}
+\end{document}

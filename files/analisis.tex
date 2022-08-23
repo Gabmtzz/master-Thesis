@@ -1,0 +1,189 @@
+\subsection{An\'alisis del espectro}
+\subsubsection{An\'alisis de Jones}
+\begin{comment}
+
+
+\frame{
+	\frametitle{Matrices de Jones}
+	\begin{itemize}
+		\item Para el polarizador inicial $0 \degree $ y el analizador $90 \degree$:
+		\begin{equation}
+			P=
+			\begin{pmatrix}
+				1&0\\
+				0&0
+			\end{pmatrix}
+			\label{Jones:ec:pol}
+		\end{equation}
+	\begin{equation}
+		A=
+		\begin{pmatrix}
+			0&0\\
+			0&1
+		\end{pmatrix}.
+		\label{Jones:ec:An}
+	\end{equation}
+   \pause
+    \item Para el retardador de media onda para cualquier \'angulo $\theta$ :
+    \begin{equation}
+    	HP(\theta)= e^{\frac{-i \pi}{2}}
+    	\begin{pmatrix}
+    		cos(\theta)^2 - \sin(\theta)^2 & 2 \cos(\theta) \sin(\theta)\\
+    		2 cos(\theta) \sin(\theta)     & \sin(\theta)^2-\cos(\theta)^2
+    	\end{pmatrix},
+    	\label{Jones:ec:HWP1}
+    \end{equation}
+    si $\theta=-22.5 \degree$:
+    \begin{equation}
+    	HP(-22.5\degree)= - \frac{1}{\sqrt{2}} i 
+    	\begin{pmatrix}
+    		1 & 1\\
+    		1  & -1
+    	\end{pmatrix},
+    	\label{Jones:ec:HWP2}
+    \end{equation}
+    
+	\end{itemize}
+}
+\frame{
+	\begin{itemize}
+		\item Para el modulador fotoel\'astico :
+		\begin{equation}
+			PEM= e^{\frac{i \pi}{4}}
+			\begin{pmatrix}
+				e^{i \Psi /2}&0\\
+				0            &i e^{-i \Psi /2}
+			\end{pmatrix}
+			\label{Jones:ec:PEM},
+		\end{equation}
+		con 
+		\begin{equation*}
+			\Psi=\Psi_0 \cos(\omega t),
+		\end{equation*}
+		en donde $\Psi_0$ es el retardo inicial y $\omega=2 \pi f$.
+	\end{itemize}
+}
+\frame{
+	\begin{itemize}
+		\item Par el divisor de haz:
+		\begin{eqnarray}
+			BS_r&=&
+			\begin{pmatrix}
+				\tilde{r}_p &0 \\
+				0   &\tilde{r}_s
+			\end{pmatrix} \label{Jones:ec:BSr}, \\
+			BS_t&=&
+			\begin{pmatrix}
+				\tilde{t}_p &0 \\
+				0   &\tilde{t}_s
+			\end{pmatrix} \label{Jones:ec:BSt},
+		\end{eqnarray}
+	 con  $\tilde{r}_{p,s} = r_{p,s} e^{\delta_{p,s}}$ y $\tilde{t}_{p,s} = t_{p,s} e^{\delta_{p,s}}$.
+	 \pause
+	 \item Para la muestra:
+	 \begin{equation}
+	 	M=
+	 	\begin{pmatrix}
+	 		\tilde{r}_{pp}&\tilde{r}_{ps}\\
+	 		\tilde{r}_{ss}&\tilde{r}_{sp}
+	 	\end{pmatrix},
+	 	\label{Jones:ec:Muestra}
+	 \end{equation}
+     con  $\tilde{r}_{pp,ss} = r_{pp,ss} e^{\delta_{pp,ss}}$ y $\tilde{r}_{pp,ss} = r_{ps,sp} e^{\delta_{ps,sp}}$ y considerando $\tilde{r}_{ps}=-\tilde{r}_{sp}$.
+	\end{itemize}
+	
+}
+\frame{
+	\frametitle{Ca\'alculo de Intensidad de luz}
+	\begin{equation}
+		E_{sal} = A \cdot BS_t \cdot M \cdot BS_r \cdot PEM \cdot HP(-22.5 \degree) \cdot P \cdot E_{in} \label{Jones:ec:Esal} 
+	\end{equation}
+ \pause
+ \begin{equation}
+ 	E_{sal} \propto A \cdot BS_t \cdot M \cdot BS_r \cdot PEM \cdot HP(-22.5 \degree) \cdot P \cdot 
+ 	\begin{pmatrix}
+ 		1\\1
+ 	\end{pmatrix}, \label{Jones:ec:Esal1} 
+ \end{equation}
+\pause
+\begin{equation}
+	I_{sal}= E_sal^{* T} \cdot E_sal. \label{Jones:ec:intens}
+\end{equation}
+
+}
+\frame{
+	Introduciendo las respectivas matrices (Ecs. \ref{Jones:ec:pol} - \ref{Jones:ec:Muestra} ) a la ecuaci\'on \ref{Jones:ec:intens}:
+	\begin{equation}
+		I_{sal} = \frac{t_s ^2}{2}\left( r_s^2 r_{ss}^2 + r_p^2 r_{sp}^2 \right) -r_p r_s r_{ss} r_{sp} t_{s}^2  \cos(\Psi -\delta^{(s)}+\Delta) \label{Jones:ec:Int}
+	\end{equation}
+    \pause
+    con $\delta^{(s)}=\delta_{ss}-\delta{sp}$ y $\Delta = \delta_p - \delta_s$
+    
+}
+\frame{
+	utilizando:
+	\begin{eqnarray}
+		\cos(a-b)&=&\cos(a)\cos(b)+ \sin(b)\sin(a) \nonumber \\
+		\sin(a+b)&=& \sin(a)\cos(b)+\cos(a)\sin(b) \nonumber 
+	\end{eqnarray}
+\pause
+y
+	\begin{eqnarray}
+		\sin(\Psi_0 \cos(\omega t))&=& 2 \sum_{n=0} J_{2n+1}(\Psi_0) \cos(n \omega t) \nonumber \\
+		\cos(\Psi_0 \sin(\omega t)) &=& J_0 (\Psi_0) - 2 \sum_{n=1} J_{2n} (\Psi_0) \cos(2n \omega t) \nonumber
+	\end{eqnarray}
+	
+}
+\frame{
+	\begin{multline}
+		I_{sal} \approx \frac{t_s ^2}{2}\left( r_s^2 r_{ss}^2 + r_p^2 r_{sp}^2 \right) \\
+		 -r_p r_s r_{ss} r_{sp} t_{s}^2 J_0(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})\sin(\Delta))\\
+		-2r_p~ r_s~ r_{ss}~ r_{sp}~ t_{s}^2~ J_{1}(\Psi_0) (\sin(\delta^{(s)}) \cos(\Delta) +cos(\delta^{(s)})\sin(\Delta)) \sin(\omega t) \\
+		+2 r_p~ r_s ~r_{ss} ~r_{sp}~ t_{s}^2~ J_2(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})sin(\Delta)) \cos(2 \omega t). \label{Jones:ec:IntAprox}
+	\end{multline}
+}
+\frame{
+	\begin{subequations}
+		\begin{gather}
+			I_{dc}=\frac{t_s ^2}{2}\left( r_s^2 r_{ss}^2 + r_p^2 r_{sp}^2 \right)-r_p~ r_s ~r_{ss} ~r_{sp} ~t_{s}^2 \nonumber\\ J_0(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})\sin(\Delta)) \label{Jones:ec:I0}\\
+			I_{1f}=-2r_p ~r_s~ r_{ss}~ r_{sp} t_{s}^2~ J_{1}(\Psi_0) (\sin(\delta^{(s)}) \cos(\Delta)+\cos(\delta^{(s)})\sin(\Delta)) \label{Jones:ec:I1} \\
+			I_{2f}=2r_p ~r_s ~r_{ss}~ r_{sp} t_{s}^2~ J_2(\Psi_0)(\cos(\delta^{(s)}) \cos(\Delta)-\sin(\delta^{(s)})\sin(\Delta)). \label{Jones:ec:I2}
+		\end{gather}
+	\end{subequations}
+}
+\end{comment}
+\frame{
+	\frametitle{Intensidad de la luz despu\'es del an\'alisis \'optico con matrices de Jones}
+	Si $r_{ss} \gg r_{sp}$ y $\Psi_0 =2.405$, adem\'as de utilizar $\tilde{r}_{ps} / \tilde{r}_{ss} = -  \tilde{r}_{sp} / \tilde{r}_{ss} =(- \theta_k + \eta_k)$ y $tan(\varPsi)=r_p/r_s$:
+\pause
+\vspace{0.7cm}
+\begin{eqnarray}
+	I_{1f}/I_{dc} &=& 4 J_1 (\Psi_0) ~tan(\varPsi) ~(\theta_k ~\sin(\Delta) - \eta_k~ \cos(\Delta)) \label{Jones:ec:divI1}\\
+	I_{2f}/I_{dc} &=& -4 J_2 (\Psi_0) ~tan(\varPsi) ~(\theta_k~\cos(\Delta) + \eta_k ~ \sin(\Delta))\label{Jones:ec:divI2}
+\end{eqnarray}
+}
+\frame{\frametitle{Medición del divisor de haz}
+  \begin{figure}[!hbt]
+  	\centering
+  	\subfigure[valores de $\Psi$]{
+  		\includegraphics[scale=0.5]{figMet/figElips/grafPsi}
+  		\label{Met:fig:PsiBS}
+  	}
+  	\subfigure[valores de $\Delta$]{
+  		\includegraphics[scale=0.5]{figMet/figElips/grafTheta}
+  		\label{Met:fig:DeltaBS}
+  	}
+  	\caption[Gr\'aficas de $\Psi$ y $\Delta$ del beamspliter a $70 \degree$.]{valores experimentales a $70\degree$  para $\Psi$ y $\Delta$ del beamsplitter en funci\'on de la energ\'ia del fot\'on con su ajuste.} 
+  	\label{Met:fig:ElipBS}
+  \end{figure}
+}
+\frame{
+	\frametitle{Ajuste a 45 \degree}
+	\begin{figure}[!hbt]
+		\centering
+		\includegraphics[scale=0.6]{figMet/figElips/grafPsidelta45.pdf}
+		\caption[Gr\'aficas de $\Psi$ y $\Delta$ del beamspliter a $70 \degree$.]{valores calculados a $45\degree$  para $\Psi$ y $\Delta$ del beamsplitter.}
+		\label{Met:fig:ElipBS45}
+	\end{figure}
+}
+\endinput

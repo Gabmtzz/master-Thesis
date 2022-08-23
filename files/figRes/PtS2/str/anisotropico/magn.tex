@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel=$\varepsilon_x$,
+	ylabel=Magnetizaci\'on $(\mu_B)$]
+	
+	\addplot table [x=e, y=magn] {magn.dat};
+	\node at (450,180) {\includegraphics[scale=0.2]{est_0.0}};
+	\node at (670,20) {\includegraphics[scale=0.2]{est_0.04}};
+	%\node at (300,20) {\includegraphics[scale=0.2]{est_-0.04}};
+	%\draw[->, color=black, very thick](200,10)--(110,5);
+	\draw[->, color=black, very thick](780,10)--(890,2);
+	\draw[->, color=black, very thick](480,220)--(500,250);
+	\end{axis}
+	
+	\end{tikzpicture}
+\end{document}

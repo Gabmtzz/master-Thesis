@@ -1,0 +1,32 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	axis y line*=left,
+	xlabel=Energ\'ia $(eV)$,
+	xmax=1.7,
+	ylabel=$\Psi (grado)$]
+	
+	
+	\addplot [mark=*,color=blue]table [ x expr=1239.4/\thisrow{nm}, y=psi] {DatosBS45.txt};
+	\label{ajuste};
+	\draw[->, color=blue, very thick](50,320)--(10,320);
+	\end{axis}
+    \begin{axis}[
+    	legend style={at={(0.65,0.95)}, nodes={scale=0.7, transform shape},  font=\large, draw=none},
+    	%legend style={nodes={scale=0.5, transform shape}},
+    	%legend pos= north west,
+    	axis y line*=right,
+    	axis x line=none,
+    	xmax=1.7,
+    	ylabel=$\Delta (grado)$]
+    	\addlegendimage{/pgfplots/refstyle=ajuste}\addlegendentry{$\Psi$}
+    	\addplot [mark=o, color=red]table [ x expr=1239.4/\thisrow{nm}, y=delta] {DatosBS45.txt};
+    	\addlegendentry{$\Delta$};
+    	\draw[->, color=red, very thick](220,50)--(270,50);
+    \end{axis}
+	
+	\end{tikzpicture}
+\end{document}

@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+    axis y line*=left,
+	xlabel=$\varepsilon$,
+	ylabel=Magnetizaci\'on $V~(\mu_B)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=blue, solid]{
+		plot "magnV" w linespoints;
+	};\label{dSe1}
+	%\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=red, solid]{
+	%	plot "dSelenio2.dat" w linespoints;
+	%}%;\label{dSe2}
+	\draw[->, color=blue, very thick](100,220)--(10,220);
+	%\draw[->, color=red, very thick](40,460)--(-30,460);
+
+	\end{axis}
+    \begin{axis}[
+    	legend style={at={(0.65,0.95)}, nodes={scale=0.5, transform shape},font=\huge, draw=none},
+    	%legend pos=  north east,
+    	axis y line*=right,
+    	axis x line=none,
+    	ylabel=Magnetizaci\'on $Se~(\mu_B)$
+    	]
+    	\addlegendimage{/pgfplots/refstyle=dSe1}\addlegendentry{$m ~V$}
+    %	\addlegendimage{/pgfplots/refstyle=dSe2}\addlegendentry{$dSe_2$}
+    	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=red, solid]{
+    		plot "magnSe" w linespoints;
+    	}; \addlegendentry{$m~Se$}
+    	\draw[->, color=red, very thick](860,250)--(970,250);
+    \end{axis}
+	
+	\end{tikzpicture}
+\end{document}

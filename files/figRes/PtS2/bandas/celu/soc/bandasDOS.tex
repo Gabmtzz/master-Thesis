@@ -1,0 +1,44 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	enlargelimits=false,
+	axis on top,
+	xtick={0, 0.6667, 1.2440, 1.5774},
+	xticklabels={$K$,$\Gamma$,$M$,$K$},
+	ylabel=$(E-E_F) ~(eV)$,
+	ymin=-2, ymax=3.3]
+	
+	\addplot [color=black, dotted]coordinates{(0,0) (1.5774,0)};
+	\addplot[color=black] coordinates {(0,3.3) (0,-3)};
+    \addplot[color=black] coordinates {(0.6667,3.3) (0.6667,-3)};
+    \addplot[color=black] coordinates {(1.2440,3.3) (1.2440,-3)};
+    \addplot[color=black] coordinates {(1.5774,3.3) (1.5774,-3)};
+	\addplot gnuplot [raw gnuplot, id=test, mark=none,color=blue, solid]{
+		plot"pts2band.dat.gnu" using 1:($2+1.9) w l;
+	};
+    
+
+	\end{axis}
+	\begin{axis}[legend style={nodes={scale=0.6, transform shape},  font=\large, draw=none}, xshift=7.6cm,	enlargelimits=false, xmin=0,xtick={},xticklabels={}, xlabel=DOS (est./eV),x=0.4cm,ymin=-2, ymax=3.3, yticklabels={}]% table
+	
+	\addplot gnuplot[raw gnuplot, id=test, mark=none, color=blue,solid]{
+		plot "pts2.dos" u 2:($1+1.85) w l;
+	};
+	\addlegendentry{total}
+	\addplot gnuplot[raw gnuplot, id=test, mark=none, color=red,solid]{
+		plot "Pt_d.dat" u 2:($1+1.85) w l
+	};
+	\addlegendentry{$Pt_d $}
+	\addplot gnuplot[raw gnuplot, id=test, mark=none, color=green,solid]{
+		plot "S_p.dat" u 2:($1+1.85) w l
+	};
+	\addlegendentry{$S_p $}
+	\addplot [color=black, dotted]coordinates{(0,0) (7,0)};
+	\end{axis}
+	\end{tikzpicture}
+	
+\end{document}

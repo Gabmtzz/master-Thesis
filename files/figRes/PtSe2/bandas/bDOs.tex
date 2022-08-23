@@ -1,0 +1,20 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	enlargelimits=false,
+	axis on top,
+	ylabel=$E-E_f (eV)$]
+	
+	\addplot table [
+	red,
+	x=k,
+	y=en]
+	{bandas.txt};
+	\end{axis}
+	
+	\end{tikzpicture}
+\end{document}

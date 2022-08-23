@@ -1,0 +1,26 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+	%legend pos= north west,
+	%xmin=800, 
+	xmax=1.6,
+	xlabel=Energ\'ia $(eV)$,
+	ylabel=$\Delta \theta_k  ~ \Delta \eta_k ~(rad)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=blue, solid]{
+		plot  "datKerrCorr_1.txt" u (1239.4/$1):($4-$2) w linespoints;
+	};\addlegendentry{$\Delta \theta_k$}
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=red, solid]{
+       plot  "datKerrCorr_1.txt" u (1239.4/$1):($5-$3) w linespoints ;
+	};\addlegendentry{$\Delta \eta_k$ }
+       
+	\end{axis}
+
+	
+	\end{tikzpicture}
+\end{document}

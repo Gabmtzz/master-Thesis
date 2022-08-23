@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.16}
+\begin{document}
+	\begin{tikzpicture}
+		\begin{axis}[legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+			enlargelimits=false,
+			ytick={},yticklabels={},
+			ylabel=DOS (est./eV),
+			xmin=-2, xmax=2.5, xlabel=$(E-E_F) ~(eV)$]
+			\addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+				plot "Pt_d.dat" u ($1+0.96):4 w l;
+			};
+		    \addlegendentry{$d_{z^2}$}
+		    \addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=blue,solid]{
+		    	plot "Pt_d.dat" u ($1+0.96):($10+$12) w l;
+		    };
+		    \addlegendentry{$d_{x^2-y^2} + d_{xy}$}
+		    \addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+		    	plot "Pt_d.dat" u ($1+0.96):($6+$8) w l;
+		    };
+		    \addlegendentry{$d_{zx} + d_{zy} $}
+		    \addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=red,solid]{
+		    	plot "Pt_d.dat" u ($1+0.96):(-1*$5) w l;
+		    };
+	        \addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=blue,solid]{
+	        	plot "Pt_d.dat" u ($1+0.96):(-1*$11-$13) w l;
+	        };
+            \addplot gnuplot[raw gnuplot, id=dostot1, mark=none, color=green,solid]{
+            	plot "Pt_d.dat" u ($1+0.96):(-1*$7-$9) w l;
+            };
+            \addplot [color=black]coordinates {(-3,0) (2.5,0)};
+            \addplot [color=black, dotted]coordinates{(0,-1.5) (0,1.5)};
+            \draw[->, color=red, very thick](-1.5,-0.5)--(-1.5,-1);
+            \draw[->, color=blue, very thick](-1.5,0.5)--(-1.5,1);
+		\end{axis}
+	\end{tikzpicture}
+\end{document}

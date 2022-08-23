@@ -1,0 +1,38 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+    axis y line*=left,
+	xlabel=$\varepsilon$,
+	ylabel=$\Delta (S-S)_{1} (\AA)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=blue, solid]{
+		plot "dS.dat" w linespoints;
+	};\label{dS1}
+	%\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=red, solid]{
+	%	plot "dSelenio2.dat" w linespoints;
+	%}%;\label{dSe2}
+	\draw[->, color=blue, very thick](100,620)--(10,620);
+	%\draw[->, color=red, very thick](40,460)--(-30,460);
+
+	\end{axis}
+    \begin{axis}[
+    	legend style={at={(0.3,0.6)}, nodes={scale=0.7, transform shape},  font=\large, draw=none},
+    	%legend pos= north west,
+    	axis y line*=right,
+    	axis x line=none,
+    	ylabel=$\Delta (S-S)_2 (\AA)$
+    	]
+    	\addlegendimage{/pgfplots/refstyle=dS1}\addlegendentry{$\Delta S_1$}
+    %	\addlegendimage{/pgfplots/refstyle=dSe2}\addlegendentry{$dSe_2$}
+    	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=red, solid]{
+    		plot "dS_2.dat" w linespoints;
+    	}; \addlegendentry{$\Delta S_2$}
+    	\draw[->, color=red, very thick](930,310)--(1050,310);
+    \end{axis}
+	
+	\end{tikzpicture}
+\end{document}

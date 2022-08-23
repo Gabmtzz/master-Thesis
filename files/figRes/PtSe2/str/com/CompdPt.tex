@@ -1,0 +1,24 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\pgfplotsset{width=9cm, compat=1.5}
+\begin{document}
+	\begin{tikzpicture}
+	\begin{axis}[
+	legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none},
+	legend pos= north west,
+	xlabel=$\varepsilon$,
+	ylabel=$\Delta (Pt-Pt) (\AA)$]
+	
+	
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=+,color=blue, solid]{
+		plot "dPt.dat" w linespoints;
+	};\addlegendentry{$\Delta Pt_{iso}$}
+	\addplot gnuplot [raw gnuplot, id=ds1, mark=*,color=red, solid]{
+		plot "dPlatino.dat" w linespoints;
+	};\addlegendentry{$\Delta Pt_{anis}$}
+
+	\end{axis}
+
+	
+	\end{tikzpicture}
+\end{document}

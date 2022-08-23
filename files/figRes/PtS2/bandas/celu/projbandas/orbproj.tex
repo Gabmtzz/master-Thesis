@@ -1,0 +1,36 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\pgfplotsset{width=9cm, compat=1.16}
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}[
+  view={0}{90},
+  enlargelimits=false,
+  axis on top,
+  xtick={1, 30, 64,90},
+  xticklabels={$K$,$\Gamma$,$M$,$K$},
+  ylabel=$(E-E_F)~ (eV)$,
+  xmin=1, xmax=90,
+  ymin=-2, ymax=3.3,
+  zmin=0.2, zmax=7,
+  legend style={nodes={scale=0.7, transform shape},  font=\large, draw=none}
+]% coordinates
+\addplot3 [only marks, mark size=0.7, blue, raw gnuplot, id=pdos] gnuplot { splot "k_PS2_Pt_d.dat" u 1:($2+1.88):3 w points;
+};
+\addlegendentry{$Pt_d$}
+\addplot3 [only marks, mark size=0.5, red, raw gnuplot, id=pdosSe] gnuplot { splot "k_PS2_S_p.dat" u 1:($2+1.9):3 w points;
+};
+\addlegendentry{$S_p$}
+
+\addplot[color=black] coordinates {(1,3.3) (1,-3)};
+\addplot[color=black] coordinates {(30,3.3) (30,-3)};
+\addplot[color=black] coordinates {(64,3.3) (64,-3)};
+\addplot[color=black] coordinates {(90,3.3) (90,-3)};
+\addplot [color=black, dotted]coordinates{(0,0) (90,0)};
+
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
